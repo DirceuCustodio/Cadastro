@@ -26,7 +26,7 @@
           <h1>Pesquisar</h1>
           
             <nav class="navbar navbar-light bg-light">
-                <form class="form-inline" action="pesquisar.php" method="POST">
+                <form class="form-inline" action="pesquisa.php" method="POST">
                     <input class="form-control mr-sm-2" type="search" placeholder="Nome" aria-label="Search" name="busca">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
                 </form>
