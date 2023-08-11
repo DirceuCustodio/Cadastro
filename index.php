@@ -8,39 +8,22 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet"  href="css/bootstrap.css">
 
-    <title>Cadastro</title>
+    <title>Empresa</title>
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col">
-          <h1>Cadastro</h1>
-              <form action="cadastro_script.php" method="POST">
-                <div class="form-group">
-                    <label for="nome">Nome completo</label>
-                    <input type="text" class="form-control" name="nome" required>
-                </div>
-                <div class="form-group">
-                    <label for="endereco">Endereço</label>
-                    <input type="text" class="form-control" name="endereco">
-                </div>
-                <div class="form-group">
-                    <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" name="telefone" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="data_nascimento">Data de Nacimento</label>
-                    <input type="date" class="form-control" name="data_nascimento">
-                </div>
-                <br>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-success">
-                </div>
-              </form>
+           <div class="jumbotron">
+                <h1 class="display-4">Cadastro Web</h1>
+                <p class="lead">Este é um sistema simplificado de cadastros. Base de estudos para criação de sistemas Web com PHP e MySQL.</p>
+                <hr class="my-4">
+                <p>Acesse as funções.</p>
+                <p class="lead">
+                <a class="btn btn-primary btn-lg" href="cadastro.php" role="button">Cadastro</a>
+                <a class="btn btn-primary btn-lg" href="pesquisa.php" role="button">Pesquisar</a>
+                </p>
+            </div>
         </div>  
       </div>
     </div>
