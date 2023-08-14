@@ -13,11 +13,15 @@
   <body>
 
     <?php 
+
         $pesquisa = $_POST['busca'] ??'';
 
         include "conexao.php";
 
         $sql = "SELECT * FROM pessoas WHERE nome LIKE '%$pesquisa%'";
+
+        $dados = mysqli_query($conn, $sql);
+
     ?>
 
     <div class="container">
@@ -25,12 +29,14 @@
         <div class="col">
           <h1>Pesquisar</h1>
           
-            <nav class="navbar navbar-light bg-light">
-                <form class="form-inline" action="pesquisa.php" method="POST">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Nome" aria-label="Search" name="busca">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-                </form>
-            </nav>
+          <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <form class="d-flex" role="search" action="pesquisa.php" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Nome" aria-label="Search" name="busca" autofocus>
+                <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+              </form>
+            </div>
+          </nav>
 
             <table class="table table-hover">
                 <thead>
@@ -40,17 +46,40 @@
                         <th scope="col">Telefone</th>
                         <th scope="col">Email</th>
                         <th scope="col">Data de Nascimento</th>
+                        <th scope="col">funções</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">Nome</th>
-                        <td>Rua Pitomba</td>
-                        <td>65 9 9975 7825</td>
-                        <td>fulanodetal@selascol.com.br</td>
-                        <td>07/02/1009</td>
-                    </tr>
-                    
+
+                <?php
+
+                      while ($linha = mysqli_fetch_assoc($dados) ) {
+                        $cod_pessoa = $linha['cod_pessoa'];
+                        $nome = $linha['nome'];
+                        $endereco = $linha['endereco'];
+                        $telefone = $linha['telefone'];
+                        $email = $linha['email'];
+                        $data_nascimento = $linha['data_nascimento'];
+                        $data_nascimento = mostra_data($data_nascimento);
+
+                        echo "<tr>
+                                  <th scope='row'>$nome</th>
+                                  <td>$endereco</td>
+                                  <td>$telefone</td>
+                                  <td>$email</td>
+                                  <td>$data_nascimento</td>
+                                  <td>
+                                  <a href='cadastro_edit.php? id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a>
+                                  <a href='#' class='btn btn-danger btn-sm'>Excluir</a>
+                                  </td>
+
+                              </tr>";
+
+                      }
+
+                ?>
+
+
                 </tbody>
             </table>
             
