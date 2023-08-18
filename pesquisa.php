@@ -26,7 +26,7 @@
 
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class ="col">
           <h1>Pesquisar</h1>
           
           <nav class="navbar bg-body-tertiary">
@@ -51,32 +51,32 @@
                 </thead>
                 <tbody>
 
-                <?php
+                  <?php
 
-                      while ($linha = mysqli_fetch_assoc($dados) ) {
-                        $cod_pessoa = $linha['cod_pessoa'];
-                        $nome = $linha['nome'];
-                        $endereco = $linha['endereco'];
-                        $telefone = $linha['telefone'];
-                        $email = $linha['email'];
-                        $data_nascimento = $linha['data_nascimento'];
-                        $data_nascimento = mostra_data($data_nascimento);
+                        while ($linha = mysqli_fetch_assoc($dados) ) {
+                          $cod_pessoa = $linha['cod_pessoa'];
+                          $nome = $linha['nome'];
+                          $endereco = $linha['endereco'];
+                          $telefone = $linha['telefone'];
+                          $email = $linha['email'];
+                          $data_nascimento = $linha['data_nascimento'];
+                          $data_nascimento = mostra_data($data_nascimento);
 
-                        echo "<tr>
-                                  <th scope='row'>$nome</th>
-                                  <td>$endereco</td>
-                                  <td>$telefone</td>
-                                  <td>$email</td>
-                                  <td>$data_nascimento</td>
-                                  <td>
-                                      <a href='cadastro_edit.php? id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a>
-                                      <a href='#' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#confirma'
-                                      onclick=" .'"' ."pegar_dados($cod_pessoa, '$nome')" .'"'.">Excluir</a>
-                                  </td>
+                          echo "<tr>
+                                    <th scope='row'>$nome</th>
+                                    <td>$endereco</td>
+                                    <td>$telefone</td>
+                                    <td>$email</td>
+                                    <td>$data_nascimento</td>
+                                    <td>
+                                        <a href='cadastro_edit.php? id=$cod_pessoa' class='btn btn-success btn-sm'>Editar</a>
+                                        <a href='#' class='btn btn-danger btn-sm' data-bs-toggle='modal' data-bs-target='#confirma'
+                                        onclick=" .'"' ."pegar_dados($cod_pessoa, '$nome')" .'"'.">Excluir</a>
+                                    </td>
 
-                              </tr>";
-                      }
-                ?>
+                                </tr>";
+                        }
+                  ?>
 
                       <!-- onclick="pegar_dados($id, '$nome')"  O segredo está aqui!! -->
 
@@ -94,30 +94,34 @@
     <div class="modal-content">
       <div class="modal-header">
         <h2 class="modal-title fs-5" id="exampleModalLabel">Confirmação de exclusão</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>  
       </div>
       <div class="modal-body">
+
         <form action="excluir_script.php" method="POST">
           <p>Deseja realmente excluir?</p>
-          <b id="nome_pessoa">Nome do pessoa</b>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
-            <input type="hidden" name="id" id="cod_pessoa" value="">
-            <input type="submit" class="btn btn-danger" value="Sim">
+          <p id="nome_pessoa">Nome do pessoa</p>
         </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" class="btn btn-danger">Sim</button>
+          <input type="hidden" name="id" id="cod_pessoa" value="">
+          <!-- <input type="submit" class="btn btn-danger" value="Sim"> -->
+                      
       </div>
     </div>
   </div>
 </div>
     
 
-<script type="text/javascript">
+<script>
     function pegar_dados(id, nome) {
-        document.getElementeById('nome_pessoa').innerHTML = nome;
-        document.getElementeById('cod_pessoa').value = id;
+        document.getElementById('nome_pessoa').innerHTML = nome;
+        document.getElementById('cod_pessoa').value = id;
     }
-
 </script>
 
 
