@@ -23,8 +23,11 @@
             $email = $_POST['email'];
             $data_nascimento = $_POST['data_nascimento'];
 
-            $sql = "INSERT INTO `pessoas`( `nome`, `endereco`, `telefone`, `email`, `data_nascimento`) 
-                    VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento')";
+            $foto = $_FILES['foto'];
+            $nome_foto = mover_foto($foto['nome_foto'])
+
+            $sql = "INSERT INTO `pessoas`( `nome`, `endereco`, `telefone`, `email`, `data_nascimento`, `foto`) 
+                    VALUES ('$nome','$endereco','$telefone','$email','$data_nascimento','$nome_foto')";
 
               if (mysqli_query($conn, $sql)) {
                  mensagem("$nome cadastro com sucesso!",'success');

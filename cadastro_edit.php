@@ -39,7 +39,7 @@
                 </div>
                 <div class="form-group">
                     <label for="telefone">Telefone</label>
-                    <input type="text" class="form-control" name="telefone" value="<?php echo $linha['telefone']; ?>">
+                    <input type="text" class="form-control" name="telefone" onkeypress="$(this).mask('(00) 0000-00009')" value="<?php echo $linha['telefone']; ?>">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
